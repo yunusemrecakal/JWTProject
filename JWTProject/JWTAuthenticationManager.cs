@@ -7,16 +7,12 @@ namespace JWTProject
 {
     public class JWTAuthenticationManager : IJWTAuthenticationManager
     {
-
-
-
         public string Authenticate(string username, string password)
         {
             if (!UserManager.Users.Any(x => x.Key == username && x.Value.Password == password))
             {
                 return null;
             }
-
             User user = UserManager.Users.FirstOrDefault(x=> x.Key == username).Value;
 
             var tokenHandler = new JwtSecurityTokenHandler();

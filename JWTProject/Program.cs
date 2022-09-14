@@ -26,9 +26,6 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Description = "JWT Authorization header using the Bearer scheme."
     });
-
-
-
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
@@ -47,9 +44,9 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddAuthentication(x =>
 {
-
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
 }).AddJwtBearer(x =>
 {
     x.RequireHttpsMetadata = false;
@@ -72,21 +69,15 @@ builder.Services.AddAuthentication(x =>
                 var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Role, user.GroupName)
-                        
+
                     };
 
                 var appIdentity = new ClaimsIdentity(claims);
                 ctx.Principal.AddIdentity(appIdentity);
             }
         }
-
     };
 });
-
-//builder.Services.AddAuthorization(x =>
-//{
-//    x.AddPolicy("admin", policy => policy.RequireClaim("admin"));
-//});
 
 builder.Services.AddSingleton<IJWTAuthenticationManager, JWTAuthenticationManager>();
 

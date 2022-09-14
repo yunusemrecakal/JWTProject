@@ -50,8 +50,6 @@ namespace JWTProject.Controllers
         [Authorize(Roles = "admin")]
         public string Admin()
         {
-            //var token = jWTAuthenticationManager.Authenticate(user.username, user.password);    
-            //if (token == null) return BadRequest("Kullanıcı adı veya şifre yanlış!");
             return "Merhaba Admin";
         }
 
@@ -61,8 +59,6 @@ namespace JWTProject.Controllers
 
         public string Admin2()
         {
-            //var token = jWTAuthenticationManager.Authenticate(user.username, user.password);    
-            //if (token == null) return BadRequest("Kullanıcı adı veya şifre yanlış!");
             return "Merhaba Admin2";
         }
         public class cred
